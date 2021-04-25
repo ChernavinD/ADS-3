@@ -26,11 +26,11 @@ std::string infx2pstfx(std::string inf) {
 			i--;
 		} else if (stack1.isEmpty()) {
 			stack1.push(inf[i]);
-    } else if (inf[i] == '(') {
+    		} else if (inf[i] == '(') {
 			stack1.push(inf[i]);
-    } else if (prior(inf[i]) > prior(stack1.get())) {
+  		} else if (prior(inf[i]) > prior(stack1.get())) {
 			stack1.push(inf[i]);
-    } else if (prior(inf[i]) <= prior(stack1.get())) {
+   		} else if (prior(inf[i]) <= prior(stack1.get())) {
 			while (prior(inf[i]) <= prior(stack1.get())) {
 				if (stack1.get() != '(' && stack1.get() != ')') {
 					result += stack1.get();
@@ -38,7 +38,7 @@ std::string infx2pstfx(std::string inf) {
 				}
 				stack1.pop();
 				if (stack1.isEmpty())
-					break;
+				break;
 			}
 			stack1.push(inf[i]);
 		} else if (inf[i] == ')') {
@@ -85,16 +85,13 @@ int eval(std::string pst) {
 			if (pst[i] == '+') {
 				stack2.push(a + b);
 				pst[i] = ' ';
-			}
-			else if (pst[i] == '-') {
+			} else if (pst[i] == '-') {
 				stack2.push(a - b);
 				pst[i] = ' ';
-			}
-			else if (pst[i] == '*') {
+			} else if (pst[i] == '*') {
 				stack2.push(a * b);
 				pst[i] = ' ';
-			}
-			else if (pst[i] == '/') {
+			} else if (pst[i] == '/') {
 				stack2.push(a / b);
 				pst[i] = ' ';
 			}
